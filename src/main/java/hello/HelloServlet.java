@@ -7,6 +7,9 @@ package hello;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.util.TimeZone;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -111,35 +114,212 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String msg = "";
+        String zona = "";
+        String local = "";
+        String trat = "";
+        
+        TimeZone timeZone = TimeZone.getTimeZone("GMT");
+        SimpleDateFormat date_format=new SimpleDateFormat("HH");
+        date_format.setTimeZone(timeZone);
+        Date date=new Date();		
+        String current_date_time=date_format.format(date);
+        
+        String tempo = "";
+        int fuso = 0;
+        
+        /*TRATANDO NOME*/
+        String nome = "";
+        nome = request.getParameter("nome");
+        if(nome==null || nome == ""){
+            nome = "Fulano";}
+        
+        /*TRATANDO PRONOME DE TRATAMENTO*/
+        String tratamento = request.getParameter("tratamento");
+        
+        
+        /*TRATANDO TEMPO E IDIOMA E PRONOME*/
         
         String lang = request.getParameter("lang");
         if(lang==null)
             lang = "pt";
         switch(lang){
             case "pt":
-                msg = "Alô, ";
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "Senhor";
+                        break;
+                    case "mulher":
+                        trat = "Senhora";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                /*FRASE COMPLETA*/
+                if(fuso > 6 && fuso <= 12){msg = "Bom dia, " + trat + " " + nome + "!";}
+                else if(fuso > 12 && fuso <= 18 ){msg = "Boa Tarde, " + trat + " " + nome + "!";}
+                else{msg = "Boa Noite, " + trat + " " + nome + "!";}
+                
+                zona = "America/Sao_Paulo";
+                local = "no Brasil";
                 break;
+                
             case "en":
-                msg = "Hello, ";
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "Sir";
+                        break;
+                    case "mulher":
+                        trat = "Lady";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("America/New_York");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                if(fuso > 6 && fuso <= 12){msg = "Good morning, " + trat + " " + nome + "!";}
+                else if(fuso > 12 && fuso <= 18 ){msg = "Good afternoon, " + trat + " " + nome + "!";}
+                else{msg = "Good evening, " + trat + " " + nome + "!";}
+                
+                zona = "America/New_York";
+                local = "no USA";
                 break;
+                
             case "fr":
-                msg = "Bonjour, ";
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "Monsieur";
+                        break;
+                    case "mulher":
+                        trat = "Madame";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("Europe/Paris");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                if(fuso > 6 && fuso <= 12){msg = "Bonjour, " + trat + " " + nome + "!";}
+                else if(fuso > 12 && fuso <= 18 ){msg = "Bon après-midi, " + trat + " " + nome + "!";}
+                else{msg = "Bonsoir, " + trat + " " + nome + "!";}
+                
+                zona = "Europe/Paris";
+                local = "na França";
                 break;
+                
             case "de":
-                msg = "Hallo, ";
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "Herr";
+                        break;
+                    case "mulher":
+                        trat = "Dame";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("Europe/Berlin");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                if(fuso > 6 && fuso <= 12){msg = "Guten Morgen, " + trat + " " + nome + "!";}
+                else if(fuso > 12 && fuso <= 18 ){msg = "Guten Tag, " + trat + " " + nome + "!";}
+                else{msg = "Guten Abend, " + trat + " " + nome + "!";}
+                
+                zona = "Europe/Berlin";
+                local = "na Alemanha";
                 break;
+                
+            case "kr":
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "-ssi";
+                        break;
+                    case "mulher":
+                        trat = "-ssi";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("Asia/Seoul");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                if(fuso > 6 && fuso <= 12){msg = "Annyeonghaseyo, " + nome + trat + "!";}
+                else if(fuso > 12 && fuso <= 18 ){msg = "Annyeonghaseyo, " + nome + trat + "!";}
+                else{msg = "Annyeonghaseyo, " + nome + trat + "!";}
+                
+                zona = "Asia/Seoul";
+                local = "na Coréia do Sul";
+                break;
+                
+            case "jp":
+                /*PRONOME*/
+                switch(tratamento){
+                    case "homem":
+                        trat = "-san";
+                        break;
+                    case "mulher":
+                        trat = "-san";
+                        break;
+                }
+                
+                
+                /*TEMPO*/
+                timeZone = TimeZone.getTimeZone("Asia/Tokyo");
+		date_format.setTimeZone(timeZone);
+		current_date_time=date_format.format(date);
+                
+                tempo = date_format.format(date);
+                fuso = Integer.parseInt(tempo);
+                
+                if(fuso > 6 && fuso <= 17){msg = "Ohayô gozaimasu, " + nome + trat + "!";}
+                else if(fuso > 17 && fuso <= 20 ){msg = "Konnichiwa, " + nome + trat + "!";}
+                else{msg = "Konbanwa, " + nome + trat + "!";}
+                
+                zona = "Asia/Tokyo";
+                local = "no Japão";
+                break;
+                
         }
         
-        String nome = request.getParameter("nome");
-
-        if(nome==null)
-            nome = "Fulano";
+        /*TRATANDO COR FAVORITA*/
+        String cor = request.getParameter("cor");
         
-        msg = msg+nome+"!";
-
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -149,7 +329,12 @@ public class HelloServlet extends HttpServlet {
             out.println("<h1>Servlet HelloServlet</h1>");
             out.println("<p>" + msg + "</p>");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>"); */
+            request.setAttribute("mensagem", msg);
+            request.setAttribute("zona", zona);
+            request.setAttribute("local", local);
+            request.setAttribute("cor", cor);
+            request.getRequestDispatcher("hellouser.jsp").forward(request, response);
         }
     }
 
