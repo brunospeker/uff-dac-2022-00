@@ -16,3 +16,4 @@ Funcionalidades adicionadas:
 
 -Adicionado o botão para sua cor favorita ser mostrada
 
+![image](https://user-images.githubusercontent.com/33992947/177111827-b65e10e6-9183-475d-a372-3e8c10613598.png)
