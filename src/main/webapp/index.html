@@ -9,11 +9,37 @@ and open the template in the editor.
         <title>Demo do Tópico 1</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
     <body>
-        <div>Funcionalidades disponíveis:</div>
-        <p>HelloServlet.java (Método GET) (<a href=".\alomundo?lang=pt&nome=Fulano">link</a>)</p>
-        <p>Formulário de HelloWorld (usando o HelloServlet.java - Método POST) (<a href=".\helloform.html">link</a>)</p>
-        <p>Formulário de HelloWorld (usando o sayhello.jsp) (<a href=".\helloform2.html">link</a>)</p>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">Funcionalidades disponíveis:</h1>
+            <!-- Three columns of text below the carousel -->
+            <div class="row text-center">
+              <div class="col-lg-4">
+                <h2 class="fw-normal">HelloServlet.java</h2>
+                <p>Método GET.</p>
+                <p><a class="btn btn-secondary disabled" role="button" aria-disabled="true" href=".\alomundo?lang=pt&nome=Fulano">Clique Aqui</a></p>
+              </div><!-- /.col-lg-4 -->
+              
+              <div class="col-lg-4">
+                <h2 class="fw-normal">Formulário de HelloWorld</h2>
+                <p>usando o HelloServlet.java - Método POST.</p>
+                <p><a class="btn btn-secondary" href=".\helloform.html">Clique Aqui</a></p>
+              </div><!-- /.col-lg-4 -->
+              
+              <div class="col-lg-4">
+                <h2 class="fw-normal">Formulário de HelloWorld</h2>
+                <p>usando o "sayhello.jsp".</p>
+                <p><a class="btn btn-secondary disabled" role="button" aria-disabled="true" href=".\helloform2.html">Clique Aqui</a></p>
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+        </div>
+            
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        
     </body>
 </html>
