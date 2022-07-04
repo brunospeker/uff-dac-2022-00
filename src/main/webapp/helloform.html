@@ -9,17 +9,48 @@ and open the template in the editor.
         <title>Formulário de HelloWorld (usando o HelloServlet.java)</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
     <body>
-        <div>Formulário de HelloWorld (usando o HelloServlet.java)</div>
-           <form action="alomundo" method="post">
-           <br>Idioma: <input type="radio" name="lang" value="pt" checked> Português
-           <input type="radio" name="lang" value="en"> Inglês
-           <input type="radio" name="lang" value="fr"> Francês
-           <input type="radio" name="lang" value="de"> Alemão<br><br>
-           Nome: <input type="text" name="nome"/><br><br>
-           <input type="submit" value="Cumprimentar"/>
-        </form>
+        <div class="col-lg-8">
+            <h2 class="fw-normal">Formulário de HelloWorld (usando o HelloServlet.java)</h2>
+                <form action="alomundo" method="post">
+                    <h4>Digite seu nome:</h4>
+                    <input type="text" class="form-control form-control-lg" name="nome" placeholder="Fulano"/>
 
+                    <h4>Idioma:</h4>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="lang">
+                        <option name="lang" value="pt" selected>Português</option>
+                        <option name="lang" value="en">Inglês</option>
+                        <option name="lang" value="fr">Francês</option>
+                        <option name="lang" value="de">Alemão</option>
+                        <option name="lang" value="kr">Coreano</option>
+                        <option name="lang" value="jp">Japones</option>
+                    </select>
+
+                    <h4>Saudação:</h4>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="tratamento" id="btnradio1" value="nenhum" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">Nenhum</label>
+
+                        <input type="radio" class="btn-check" name="tratamento" id="btnradio2" value="homem">
+                        <label class="btn btn-outline-primary" for="btnradio2">Senhor</label>
+
+                        <input type="radio" class="btn-check" name="tratamento" id="btnradio3" value="mulher">
+                        <label class="btn btn-outline-primary" for="btnradio3">Senhora</label>
+                    </div>
+                    
+                    <h4>Sua cor favorita:</h4>
+                    <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#FFFFFF" title="Choose your color" name="cor"> <br>
+                    
+                    <button type="submit" value="Cumprimentar" class="btn btn-secondary btn-lg">Cumprimentar</button>
+                </form>
+        </div>
+            
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        
     </body>
 </html>
